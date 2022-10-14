@@ -1,5 +1,6 @@
 <?php
-require "vendor/autoload.php";
+include_once 'vista/estructura/header.php';
+require "utiles/vendor/autoload.php";
 use Location\Coordinate;
 use Location\Polygon;
 use Location\Formatter\Polygon\GeoJSON;
@@ -10,7 +11,14 @@ $polygon->addPoint(new Coordinate(20, 40));
 $polygon->addPoint(new Coordinate(30, 40));
 $polygon->addPoint(new Coordinate(30, 20));
 
+?>
+<div class="pt-5 text-center">
+<?php
 $formatter = new GeoJSON;
 
 echo $formatter->format($polygon);
+?>
+</div>
+<?php
+include_once 'vista/estructura/footer.php';
 ?>

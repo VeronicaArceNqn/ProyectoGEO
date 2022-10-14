@@ -1,5 +1,6 @@
 <?php
-require "vendor/autoload.php";
+include_once 'vista/estructura/header.php';
+require "utiles/vendor/autoload.php";
 use Location\Coordinate;
 use Location\Formatter\Coordinate\DMS;
 
@@ -27,6 +28,7 @@ echo "Latitud Norte o Sur y Longitud Este u Oeste <br>";
 echo $coordinate->format($formatter) . PHP_EOL."<br>";
 
 ?>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
 <link rel="stylesheet" type="text/css" href="vista/css/estilo.css">
