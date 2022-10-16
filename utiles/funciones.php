@@ -16,15 +16,25 @@ function data_submitted()
         $_AAux = $_GET;
       }
     }
-    //comprobamos si el array $_AAux no este vacio
-    if (count($_AAux)>0) {
-        foreach ($_AAux as $indice => $valor) {
-            //si el valor del campo esta vacio
-            if ($valor == "")
-            { //al campo le asignamos null
-                 $_AAux[$indice] = 'null';
-            }
-        }
+    //comprobamos si el array $_AAux existe
+    if(array_key_exists('coordenadas',$_AAux))
+    {
+    if (count($_AAux["coordenadas"])>0) {
+
+      for($i=0;$i<count($_AAux["coordenadas"]);$i++)
+      {
+         $lat=$_AAux["coordenadas"][$i]["latitud"];
+         $lon=$_AAux["coordenadas"][$i]["longitud"];
+         if($lat=="")
+         {
+            $_AAux["coordenadas"][$i]["latitud"]=0;   
+         }
+         if($lon=="")
+         {
+            $_AAux["coordenadas"][$i]["longitud"]=0;  
+         }
+      }
+    }
     }
     return $_AAux;
 }

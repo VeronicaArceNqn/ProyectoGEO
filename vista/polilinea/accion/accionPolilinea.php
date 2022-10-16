@@ -1,5 +1,6 @@
 <?php
 $dir="../";
+$titulo="Ver Polilinea";
 include_once $dir.'../estructura/header.php';
 require $dir."../../utiles/vendor/autoload.php";
 use Location\Coordinate;

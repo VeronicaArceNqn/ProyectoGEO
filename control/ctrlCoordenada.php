@@ -1,5 +1,5 @@
 <?php
-class ctrlCoordenada
+class CtrlCoordenada
 {
 function validarCoordenada($arreCordenada)
 {

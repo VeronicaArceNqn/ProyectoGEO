@@ -2,6 +2,7 @@
  $dir="";
  $titulo="Coordenada";
  include_once $dir.'../estructura/header.php';
+ 
  ?>
  <div class="container border border-secondary principal mt-3 pt-3">
  <div class="">
