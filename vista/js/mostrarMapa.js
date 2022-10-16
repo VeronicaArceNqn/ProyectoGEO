@@ -23,19 +23,19 @@ var watchId;
         var longitud=parseInt(Lon);
        // alert ("latitud: "+ latitud + "Longitud: " + longitud)
         
-        var miPosicion = new google.maps.LatLng(latitud, longitud,11);
+        var miPosicion = new google.maps.LatLng(latitud, longitud);
     
 
 // Se comprueba si el mapa se ha cargado ya 
 if (mapa == null) {
   // Crea el mapa y lo pone en el elemento del DOM con ID mapa
-  var configuracion = {center: miPosicion, zoom: 16, mapTypeId: google.maps.MapTypeId.HYBRID};
+  var configuracion = {center: miPosicion, zoom: 11, mapTypeId: google.maps.MapTypeId.HYBRID};
   mapa = new google.maps.Map(document.getElementById("mapa"), configuracion);
 
   // Crea el marcador en la posicion actual
   mapaMarcador = new google.maps.Marker({position: miPosicion, title:"Esta es tu posición"});
   mapaMarcador.setMap(mapa);
-  mapaMarcador.zoom(11);
+
 } else {
   // Centra el mapa en la posicion actual
   mapa.panTo(miPosicion);

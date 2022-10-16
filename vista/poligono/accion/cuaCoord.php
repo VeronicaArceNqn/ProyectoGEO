@@ -1,6 +1,8 @@
 <?php
-include_once 'vista/estructura/header.php';
-require "utiles/vendor/autoload.php";
+$dir="../";
+$titulo="";
+include_once $dir.'../estructura/header.php';
+require $dir."../../utiles/vendor/autoload.php";
 use Location\Coordinate;
 use Location\Polygon;
 use Location\Formatter\Polygon\GeoJSON;
@@ -20,5 +22,5 @@ echo $formatter->format($polygon);
 ?>
 </div>
 <?php
-include_once 'vista/estructura/footer.php';
+include_once $dir.'../estructura/footer.php';
 ?>

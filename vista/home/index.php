@@ -1,6 +1,7 @@
 
 <?php
 $dir="";
+$titulo=".: Inicio :.";
 include_once '../estructura/header.php';
 ?><div class="container-fluid principal">
       <div class="container text-center mx-auto" style="width: 300px">
