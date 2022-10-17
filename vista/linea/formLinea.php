@@ -6,7 +6,7 @@ include_once '../estructura/header.php';
 
 
 <div class="container border border-secondary principal mt-3 pt-3">
-    <h3 class="text-center">Crear Linea</h3>
+    <h3 class="text-center">Linea</h3>
     <form method="post" class="row m-3 p-4 pt-3 bg-light fw-bold needs-validation" action="accion/accionLinea.php" novalidate>
     <div class="col-md-3">
 
@@ -57,7 +57,7 @@ include_once '../estructura/header.php';
 
         <input id="accion" name="accion" value="nuevo" type="hidden">
         <div class="col-12 pt-5">
-            <button class="btn btn-success d-grid gap-2 col-3 mx-auto" type="submit">Guardar</button>
+            <button class="btn btn-success d-grid gap-2 col-3 mx-auto" type="submit">Enviar</button>
         </div>
     </form>
 

@@ -26,22 +26,23 @@
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">TP Librerias</a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../coordenada/formCoordenada.php">Crear coordenada</a>
+
+                <a class="dropdown-item" href="<?php echo $dir?>../coordenada/formCoordenada.php">Coordenada</a>
               </li>
              <!-- <li>
                 <a class="dropdown-item" href="<?php //echo $dir?>cuaCoord.php">Mostrar 4 coordenadas</a>
               </li>-->
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../linea/formLinea.php">Crear  linea</a>
+                <a class="dropdown-item" href="<?php echo $dir?>../linea/formLinea.php">Linea</a>
               </li>
             <!--  <li>
                 <a class="dropdown-item" href="<?php echo $dir?>perimetro.php">Perimetro Poligono</a>
               </li>-->
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../polilinea/formPolilinea.php">Crear polilinea</a>
+                <a class="dropdown-item" href="<?php echo $dir?>../polilinea/formPolilinea.php">Polilinea</a>
               </li>
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../poligono/formPoligono.php">Crear poligono</a>
+                <a class="dropdown-item" href="<?php echo $dir?>../poligono/formPoligono.php">Poligono</a>
               </li>
             </ul>
           </li>

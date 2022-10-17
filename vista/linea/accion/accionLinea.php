@@ -14,7 +14,7 @@ $polyline->addPoint(new Coordinate($_POST["latitud2"], $_POST["longitud2"]));
 
 ?>
 <div class="container border border-secondary principal mt-3 pt-3">
-<h3 class="text-center">Ver Polilinea</h3>
+<h3 class="text-center">Ver Linea</h3>
 <div id="mapa"></div>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=inicio"></script>
   <script>

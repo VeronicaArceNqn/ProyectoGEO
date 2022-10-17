@@ -31,7 +31,7 @@ $polyline->addPoint(new Coordinate($_POST["latitud3"], $_POST["longitud3"]));
         zoom: 6
       });
 
-      var poligono = new google.maps.Polyline({
+      var polilinea = new google.maps.Polyline({
         path: verticesLinea,
         map: miMapa,
         strokeColor: 'rgb(255, 0, 0)',
@@ -40,7 +40,7 @@ $polyline->addPoint(new Coordinate($_POST["latitud3"], $_POST["longitud3"]));
       });
       var popup = new google.maps.InfoWindow();
 
-poligono.addListener('click', function (e) {
+polilinea.addListener('click', function (e) {
   popup.setContent('Contenido');
   popup.setPosition(e.latLng);
   popup.open(miMapa);

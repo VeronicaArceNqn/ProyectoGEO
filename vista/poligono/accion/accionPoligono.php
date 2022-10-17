@@ -19,11 +19,12 @@ use Location\Formatter\Polygon\GeoJSON;
         $objControl = new CtrlCoordenada();
         //Validamos las coordenadas
         if ($objControl->validarCoordenada($arredatos["coordenadas"])) {
-    
+        //Creamos una instancia de la clase poligono
         $polygon = new Polygon();
         //Agregamos cada coordenada al poligono 
         for ($i = 0; $i < count($arredatos["coordenadas"]); $i++) {
-            $polygon->addPoint(new Coordinate($arredatos["coordenadas"][$i]["latitud"], $arredatos["coordenadas"][$i]["longitud"]));
+          /*Usamos el metodo addPoint(latitud,longitud) para agregar las coordenadas del poligono*/  
+          $polygon->addPoint(new Coordinate($arredatos["coordenadas"][$i]["latitud"], $arredatos["coordenadas"][$i]["longitud"]));
         }
   
     ?>
@@ -47,9 +48,7 @@ key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
                 var verticesPoligono1 = [];
                 for (i = 0; i < datos.length; i++) {
                     //Agregamos cada coordenada 
-                    verticesPoligono1.push({
-                        lat: parseFloat(datos[i].latitud),
-                        lng: parseFloat(datos[i].longitud)
+                    verticesPoligono1.push({lat: parseFloat(datos[i].latitud),               lng: parseFloat(datos[i].longitud)
                     });
                 }
           
@@ -73,7 +72,7 @@ key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
                 var popup = new google.maps.InfoWindow();
 
                 poligono.addListener('click', function(e) {
-                    popup.setContent('Contenido');
+                    popup.setContent('<?php echo "Perimetro: ".$polygon->getPerimeter(new Vincenty())." metros"; ?>');
                     popup.setPosition(e.latLng);
                     popup.open(miMapa);
                 });

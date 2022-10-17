@@ -6,7 +6,7 @@
  ?>
  <div class="container border border-secondary principal mt-3 pt-3">
  <div class="">
-    <h3 class="text-center">Crear coordenada</h3>
+    <h3 class="text-center">Coordenada</h3>
 
     <form method="post" class="row m-4 pl-3 pt-3 bg-light fw-bold" action="accion/formato.php">
     <div class="col-md-2"></div>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="col-12 pt-5 p-5">
-            <button class="btn btn-success d-grid gap-2 col-2 mx-auto" type="submit">Guardar</button>
+            <button class="btn btn-success d-grid gap-2 col-2 mx-auto" type="submit">Enviar</button>
         </div>
     </form>
     <br><br>
