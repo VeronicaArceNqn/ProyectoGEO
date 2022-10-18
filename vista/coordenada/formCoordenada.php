@@ -15,7 +15,7 @@
     <div class="col-md-3 border border-secondary pb-2 gap-2">
 
             <label for="latitud" class="form-label">Latitud (min:-90 y max:90)</label>
-            <input type="number" class="form-control" id="latitud" name="latitud" min="-90.0" max="90.0" step='sny' value="52.5" required>
+            <input type="number" class="form-control" id="latitud" name="latitud" min="-90.0" max="90.0" step='any' value="52.5" required>
             <div class="invalid-feedback">
                 Ingrese valor min:-90 y max:90
             </div>
