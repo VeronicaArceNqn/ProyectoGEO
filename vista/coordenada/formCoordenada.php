@@ -15,7 +15,7 @@
     <div class="col-md-3 border border-secondary pb-2 gap-2">
 
             <label for="latitud" class="form-label">Latitud (min:-90 y max:90)</label>
-            <input type="number" class="form-control" id="latitud" name="latitud" min="-90.0" max="90.0" step='0.01' value="52.5" required>
+            <input type="number" class="form-control" id="latitud" name="latitud" min="-90.0" max="90.0" step='sny' value="52.5" required>
             <div class="invalid-feedback">
                 Ingrese valor min:-90 y max:90
             </div>
@@ -24,7 +24,7 @@
             </div>
 
             <label for="longitud" class="form-label">Longitud (min:-180 y max:180)</label>
-            <input type="number" class="form-control" id="longitud" name="longitud" min="-180" max="180" step='0.01' value="13.5" required>
+            <input type="number" class="form-control" id="longitud" name="longitud" min="-180" max="180" step='any' value="13.5" required>
             <div class="invalid-feedback">
                 Ingrese valor min:-180 y max:180
             </div>
