@@ -34,8 +34,7 @@ use Location\Formatter\Polygon\GeoJSON;
 
         <script async src="https://maps.googleapis.com/maps/api/js?
 key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
-        <script>
-         
+        <script>         
         function cargar(){
            //Pasamos un array asociativo de php a javascript
             var datos = <?php  echo json_encode($arredatos["coordenadas"]); ?>;
@@ -48,7 +47,7 @@ key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
                 var verticesPoligono1 = [];
                 for (i = 0; i < datos.length; i++) {
                     //Agregamos cada coordenada 
-                    verticesPoligono1.push({lat: parseFloat(datos[i].latitud),               lng: parseFloat(datos[i].longitud)
+                    verticesPoligono1.push({lat: parseFloat(datos[i].latitud), lng: parseFloat(datos[i].longitud)
                     });
                 }
           

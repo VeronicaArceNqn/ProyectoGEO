@@ -2,6 +2,34 @@
 $dir="";
 $titulo="Polilinea";
 include_once '../estructura/header.php';
+
+$arreAsoc[0]["latitud"]=-41.10;
+$arreAsoc[0]["longitud"]=-71.30;
+$arreAsoc[1]["latitud"]=-42.96;
+$arreAsoc[1]["longitud"]=-68.10;
+$arreAsoc[2]["latitud"]=-43.20;
+$arreAsoc[2]["longitud"]=-67.50;
+$arreAsoc[3]["latitud"]=-42.50;
+$arreAsoc[3]["longitud"]=-67.40;
+$arreAsoc[4]["latitud"]=-41;
+$arreAsoc[4]["longitud"]=-67;
+$arreAsoc[5]["latitud"]=-40;
+$arreAsoc[5]["longitud"]=-66;
+$arreAsoc[6]["latitud"]=-39;
+$arreAsoc[6]["longitud"]=-65;
+$arreAsoc[7]["latitud"]=-38;
+$arreAsoc[7]["longitud"]=-63;
+$arreAsoc[8]["latitud"]=-37;
+$arreAsoc[8]["longitud"]=-64;
+$arreAsoc[9]["latitud"]=-36;
+$arreAsoc[9]["longitud"]=-72;
+if(isset($_POST["cantCoordenadas"]))
+{
+    $cantCoordenadas=$_POST["cantCoordenadas"];
+}
+else{
+$cantCoordenadas=4;
+}
 ?>
 
 
@@ -9,74 +37,26 @@ include_once '../estructura/header.php';
     <h3 class="text-center">Polil&iacute;nea</h3>
     <p>La polil&iacute;nea es una lista de ubicaciones, m&iacute;nimo 3 pares de coordenadas. </p>
     <form method="post" class="row m-3 p-4 pt-3 bg-light fw-bold needs-validation" action="accion/accionPolilinea.php" novalidate>
+<?php 
 
-        <div class="col-md-3 border border-secondary pb-2">
+for($i=0;$i<$cantCoordenadas;$i++)
+ {
+  ?>
+   <div class="col-md-3 border border-secondary  rounded pb-2">
 
-            <label for="latitud1" class="form-label">Latitud</label>
-            <input type="number" class="form-control" id="latitud1" name="latitud1" min="-90" max="90" step='any' value="41.05" required>
-            <div class="invalid-feedback">
-                Ingrese valor min:-90 y max:90
-            </div>
-            <div class="valid-feedback">
-                Correcto!
-            </div>
-
-            <label for="longitud1" class="form-label">Longitud</label>
-            <input type="number" class="form-control" id="longitud1" name="longitud1" min="-180" max="180" step='any' value="-4.79" required>
-            <div class="invalid-feedback">
-                Ingrese valor min:-180 y max:180
-            </div>
-            <div class="valid-feedback">
-                Correcto!
-            </div>
-        </div>
-
-        <div class="col-md-3  border border-secondary">
-
-            <label for="latitud2" class="form-label">Latitud</label>
-            <input type="number" class="form-control" id="latitud2" name="latitud2" min="-90" max="90" value="40.39" step='any' required>
-            <div class="invalid-feedback">
-                Ingrese valor min:-90 y max:90
-            </div>
-            <div class="valid-feedback">
-                Correcto!
-            </div>
-
-            <label for="longitud2" class="form-label">Longitud</label>
-            <input type="number" class="form-control" id="longitud2" name="longitud2" min="-180" max="180" value="-6.09" step='any' required>
-            <div class="invalid-feedback">
-                Ingrese valor min:-180 y max:180
-            </div>
-            <div class="valid-feedback">
-                Correcto!
-            </div>
-        </div>
-        <div class="col-md-3 border border-secondary pb-2">
-
-<label for="latitud3" class="form-label">Latitud</label>
-<input type="number" class="form-control" id="latitud3" name="latitud3" min="-90" max="90" value="39.29" step='any' required>
-<div class="invalid-feedback">
-    Ingrese valor min:-90 y max:90
-</div>
-<div class="valid-feedback">
-    Correcto!
-</div>
-
-<label for="longitud3" class="form-label">Longitud</label>
-<input type="number" class="form-control" id="longitud3" name="longitud3" min="-180" max="180" step='any' value="-5.85" required>
-<div class="invalid-feedback">
-    Ingrese valor min:-180 y max:180
-</div>
-<div class="valid-feedback">
-    Correcto!
-</div>
-</div>
-
+  <label for="coordenadas[<?php echo $i; ?>][latitud]" class="form-label">Latitud</label>
+  <input type="number" class="form-control" name="coordenadas[<?php echo $i; ?>][latitud]" min="-90" max="90" step="any" value="<?php echo $arreAsoc[$i]["latitud"];?>" required>
+  <label for="coordenadas[<?php echo $i; ?>][longitud]" class="form-label">Longitud </label>
+  <input type="number" class="form-control" name="coordenadas[<?php echo $i; ?>][longitud]" min="-180"  max="180" step="any" value="<?php echo $arreAsoc[$i]["longitud"];?>" required>
+  </div>
+<?php 
+  }?>  
 
         <input id="accion" name="accion" value="nuevo" type="hidden">
         <div class="col-12 pt-5">
             <button class="btn btn-success d-grid gap-2 col-3 mx-auto" type="submit">Enviar</button>
         </div>
+        <a href="polilinea.php" class="btn-secondary mt-3 text-center">Ingresar otra cantidad de coordenadas</a>
     </form>
 
 </div>

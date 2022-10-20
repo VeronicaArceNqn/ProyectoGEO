@@ -1,67 +1,84 @@
 <?php
-$dir="../";
-$titulo="Ver Polilinea";
-include_once $dir.'../estructura/header.php';
-require $dir."../../utiles/vendor/autoload.php";
+$dir = "../";
+$titulo = "Ver Polilinea";
+include_once $dir . '../estructura/header.php';
+include_once $dir . '../../configuracion.php';
+
 use Location\Coordinate;
 use Location\Polyline;
 use Location\Distance\Vincenty;
 use Location\Distance\Haversine;
-if($_POST)
-{
-$polyline = new Polyline();
-$polyline->addPoint(new Coordinate($_POST["latitud1"], $_POST["longitud1"]));
-$polyline->addPoint(new Coordinate($_POST["latitud2"], $_POST["longitud2"]));
-$polyline->addPoint(new Coordinate($_POST["latitud3"], $_POST["longitud3"]));
-?>
-<div class="container border border-secondary principal mt-3 pt-3">
-<h3 class="text-center">Ver Polilinea</h3>
-<div id="mapa"></div>
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=inicio"></script>
-  <script>
-    inicio();
-       var verticesLinea = [
-        { lat: <?php echo $_POST["latitud1"];?>, lng: <?php echo $_POST["longitud1"];?>  },
-        { lat: <?php echo $_POST["latitud2"];?>, lng: <?php echo $_POST["longitud2"];?> },
-        { lat: <?php echo $_POST["latitud3"];?>, lng: <?php echo $_POST["longitud3"];?>  }
-      ];
-   
-    function inicio() {
-      var miMapa = new google.maps.Map(document.getElementById('mapa'), {
-        center: { lat: <?php echo $_POST["latitud2"];?>, lng: <?php echo $_POST["longitud2"];?> },
-        zoom: 6
-      });
 
-      var polilinea = new google.maps.Polyline({
-        path: verticesLinea,
-        map: miMapa,
-        strokeColor: 'rgb(255, 0, 0)',
-        fillColor: 'rgb(255, 255, 0)',
-        strokeWeight: 4,
-      });
-      var popup = new google.maps.InfoWindow();
+$arredatos = data_submitted();
+if (isset($arredatos["coordenadas"])) {
 
-polilinea.addListener('click', function (e) {
-  popup.setContent('Contenido');
-  popup.setPosition(e.latLng);
-  popup.open(miMapa);
-});
 
+  $objControl = new CtrlCoordenada();
+  //Validamos las coordenadas
+  if ($objControl->validarCoordenada($arredatos["coordenadas"])) {
+    $polyline = new Polyline();
+    for ($i = 0; $i < count($arredatos["coordenadas"]); $i++) {
+      $polyline->addPoint(new Coordinate($arredatos["coordenadas"][$i]["latitud"], $arredatos["coordenadas"][$i]["longitud"]));
     }
-  </script>
+?>
+    <div class="container border border-secondary principal mt-3 pt-3">
+      <h3 class="text-center">Ver Polil&iacute;nea</h3>
+      <div id="mapa"></div>
+      <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
+      <script>
+         function cargar(){
+           //Pasamos un array asociativo de php a javascript
+            var datos = <?php  echo json_encode($arredatos["coordenadas"]); ?>;
+            
+            inicio(datos);
+        }
 
-<?php 
-echo "<h6>Longitud de una polilínea</h6>
+        function inicio(datos) {
+          verticesLinea = [];
+          for (i = 0; i < datos.length; i++) {
+            //Agregamos cada coordenada 
+            verticesLinea.push({
+              lat: parseFloat(datos[i].latitud),
+              lng: parseFloat(datos[i].longitud)
+            });
+          }
+          var miMapa = new google.maps.Map(document.getElementById('mapa'), {
+            center: {
+              lat: parseFloat(verticesLinea[1].lat),
+              lng: parseFloat(verticesLinea[1].lng)
+            },
+            zoom: 6
+          });
+
+          var polilinea = new google.maps.Polyline({
+            path: verticesLinea,
+            map: miMapa,
+            strokeColor: 'rgb(255, 0, 0)',
+            fillColor: 'rgb(255, 255, 0)',
+            strokeWeight: 4,
+          });
+          var popup = new google.maps.InfoWindow();
+
+          polilinea.addListener('click', function(e) {
+            popup.setContent('Contenido');
+            popup.setPosition(e.latLng);
+            popup.open(miMapa);
+          });
+
+        }
+      </script>
+
+  <?php
+    echo "<h6>Longitud de una polil&iacute;nea</h6>
 PHPGeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos tres puntos. <br/>";
 
-echo "La longitud de la polilinea es de ".$polyline->getLength(new Vincenty())." metros usando la clase Vincenty y de ".$polyline->getLength(new Haversine())." metros usando la clase Haversine.<br>.";
-
-}
-else{
+    echo "La longitud de la polil&iacute;nea es de " . $polyline->getLength(new Vincenty()) . " metros usando la clase Vincenty y de " . $polyline->getLength(new Haversine()) . " metros usando la clase Haversine.<br>.";
+  }
+} else {
   echo "Error, no se cargaron los datos.";
 }
-?>
-</div>
-<?php
-include_once $dir.'../estructura/footer.php';
-?>
+  ?>
+    </div>
+    <?php
+    include_once $dir . '../estructura/footer.php';
+    ?>

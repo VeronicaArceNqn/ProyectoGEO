@@ -2,6 +2,7 @@
 $dir="";
 $titulo="Poligono";
 include_once '../estructura/header.php';
+$arreCoord=[];
 $lat1=-41.10;
 $lon1=-71.30;
 $lat2=-38.96;
@@ -10,68 +11,59 @@ $lat3=-36.20;
 $lon3=-70.50;
 $lat4=-39.50;
 $lon4=-71.40;
-
+$arreAsoc[0]["latitud"]=-41.10;
+$arreAsoc[0]["longitud"]=-71.30;
+$arreAsoc[1]["latitud"]=-42.96;
+$arreAsoc[1]["longitud"]=-68.10;
+$arreAsoc[2]["latitud"]=-43.20;
+$arreAsoc[2]["longitud"]=-67.50;
+$arreAsoc[3]["latitud"]=-42.50;
+$arreAsoc[3]["longitud"]=-67.40;
+$arreAsoc[4]["latitud"]=-41;
+$arreAsoc[4]["longitud"]=-67;
+$arreAsoc[5]["latitud"]=-40;
+$arreAsoc[5]["longitud"]=-66;
+$arreAsoc[6]["latitud"]=-39;
+$arreAsoc[6]["longitud"]=-65;
+$arreAsoc[7]["latitud"]=-38;
+$arreAsoc[7]["longitud"]=-63;
+$arreAsoc[8]["latitud"]=-37;
+$arreAsoc[8]["longitud"]=-64;
+$arreAsoc[9]["latitud"]=-36;
+$arreAsoc[9]["longitud"]=-72;
+if(isset($_POST["cantCoordenadas"]))
+{
+    $cantCoordenadas=$_POST["cantCoordenadas"];
+}
+else{
+$cantCoordenadas=4;
+}
 ?>
 
 <div class="container border border-secondary principal mt-3 pt-3">
     <h3 class="text-center">Pol&iacute;gono</h3>
     <p>El pol&iacute;gono es similar a una polil&iacute;nea, requiere de un m&iacute;nimo de 3 pares de coordenadas pero sus puntos inicial y final est&aacute;n conectados.</p>
     <form method="post" class="row m-3 p-4 pt-3 bg-light fw-bold needs-validation" action="accion/accionPoligono.php" novalidate>
+<?php 
 
-    <div class="col-md-3 border border-secondary  rounded pb-2">
+for($i=0;$i<$cantCoordenadas;$i++)
+ {
+  ?>
+   <div class="col-md-3 border border-secondary  rounded pb-2">
 
-<label for="coordenadas[0][latitud]" class="form-label">Latitud</label>
-<input type="number" class="form-control" name="coordenadas[0][latitud]" min="-90" max="90" step='any' value="<?php echo $lat1; ?>" required>
+  <label for="coordenadas[<?php echo $i; ?>][latitud]" class="form-label">Latitud</label>
+  <input type="number" class="form-control" name="coordenadas[<?php echo $i; ?>][latitud]" min="-90" max="90" step="any" value="<?php echo $arreAsoc[$i]["latitud"];?>" required>
+  <label for="coordenadas[<?php echo $i; ?>][longitud]" class="form-label">Longitud </label>
+  <input type="number" class="form-control" name="coordenadas[<?php echo $i; ?>][longitud]" min="-180"  max="180" step="any" value="<?php echo $arreAsoc[$i]["longitud"];?>" required>
+  </div>
+<?php 
+  }?>  
 
-
-
-<label for="coordenadas[0][longitud]" class="form-label">Longitud </label>
-<input type="number" class="form-control" name="coordenadas[0][longitud]" min="-180" max="180" step='any' value="<?php echo $lon1; ?>" required>
-
-
-</div>
-
-<div class="col-md-3  border border-secondary">
-
-<label for="coordenadas[1][latitud]" class="form-label">Latitud</label>
-<input type="number" class="form-control" name="coordenadas[1][latitud]" min="-90" max="90" value="<?php echo $lat2; ?>" step='any' required>
-
-
-
-<label for="coordenadas[1][longitud]" class="form-label">Longitud</label>
-<input type="number" class="form-control" name="coordenadas[1][longitud]" min="-180" max="180" value="<?php echo $lon2; ?>" step='any' required>
-
-
-</div>
-<div class="col-md-3 border border-secondary pb-2">
-
-<label for="coordenadas[2][latitud]" class="form-label">Latitud </label>
-<input type="number" class="form-control" name="coordenadas[2][latitud]" min="-90" max="90" value="<?php echo $lat3; ?>" step='any' required>
-
-
-
-<label for="coordenadas[2][longitud]" class="form-label">Longitud </label>
-<input type="number" class="form-control" name="coordenadas[2][longitud]" min="-180" max="180" step='any' value="<?php echo $lon3; ?>" required>
-
-
-</div>
-<div class="col-md-3 border border-secondary pb-2">
-
-<label for="coordenadas[3][latitud]" class="form-label">Latitud </label>
-<input type="number" class="form-control" name="coordenadas[3][latitud]" min="-90" max="90" step='any' value="<?php echo $lat4; ?>" required>
-
-
-
-<label for="coordenadas[3][longitud]" class="form-label">Longitud</label>
-<input type="number" class="form-control" name="coordenadas[3][longitud]" min="-180" max="180" value="<?php echo $lon4; ?>" step='any' required>
-
-
-</div>
-
-        <input id="accion" name="accion" value="nuevo" type="hidden">
+         <input id="accion" name="accion" value="nuevo" type="hidden">
         <div class="col-12 pt-5">
             <button class="btn btn-success d-grid gap-2 col-3 mx-auto" type="submit">Enviar</button>
         </div>
+         <a href="poligono.php" class="btn-secondary mt-3 text-center">Ingresar otra cantidad de coordenadas</a>
     </form>
 
 </div>

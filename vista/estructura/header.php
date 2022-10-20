@@ -39,10 +39,10 @@
                 <a class="dropdown-item" href="<?php echo $dir?>perimetro.php">Perimetro Poligono</a>
               </li>-->
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../polilinea/formPolilinea.php">Polilinea</a>
+                <a class="dropdown-item" href="<?php echo $dir?>../polilinea/polilinea.php">Polilinea</a>
               </li>
               <li>
-                <a class="dropdown-item" href="<?php echo $dir?>../poligono/formPoligono.php">Poligono</a>
+                <a class="dropdown-item" href="<?php echo $dir?>../poligono/poligono.php">Poligono</a>
               </li>
             </ul>
           </li>
