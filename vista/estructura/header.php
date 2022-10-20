@@ -54,10 +54,10 @@
               </li>
             </ul>
           </li>
-          <!--<li class="nav-item">
-              <a class="nav-link" href="#">Enlace</a>
+          <li class="nav-item">
+        <a class="nav-link" target="_blank" href="../../PHPGEO y API google maps.pdf">Documentaci&oacute;n</a>
             </li>
-            -->
+            
       </ul>
     </div>
     </header>

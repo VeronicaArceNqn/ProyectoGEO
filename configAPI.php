@@ -1,4 +1,5 @@
 <?php
-//Aca establecemos la key (clave de google maps de desarrollador)
+//Aca establecemos la key de GoogleMaps (clave de desarrollador de GoogleMaps )
 $keyGMaps="AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4";
+
 ?>
