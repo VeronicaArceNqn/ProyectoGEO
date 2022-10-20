@@ -3,6 +3,7 @@ $dir="../";
 $titulo="Ver Linea";
 include_once $dir.'../estructura/header.php';
 include_once $dir . '../../configuracion.php';
+include_once $dir . '../../configAPI.php';
 use Location\Coordinate;
 use Location\Distance\Vincenty;
 use Location\Distance\Haversine;
@@ -21,7 +22,7 @@ if (isset($arredatos["coordenadas"]))
   <div class="container border border-secondary principal mt-3 pt-3">
   <h3 class="text-center">Ver Linea</h3>
   <div id="mapa"></div>
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=<?php echo $keyGMaps; ?>&callback=cargar"></script>
     <script>
         function cargar(){
            //Pasamos un array asociativo de php a javascript
@@ -31,46 +32,8 @@ if (isset($arredatos["coordenadas"]))
             inicio(datos,latPuntoMedio,lonPuntoMedio);
         }
 
-        function inicio(datos,latPuntoMedio,lonPuntoMedio) {
-          verticesLinea = [];
-          for (i = 0; i < datos.length; i++) {
-            //Agregamos cada coordenada 
-            verticesLinea.push({
-              lat: parseFloat(datos[i].latitud),
-              lng: parseFloat(datos[i].longitud)
-            });
-          }
-          var miMapa = new google.maps.Map(document.getElementById('mapa'), {
-            center: {
-              lat: parseFloat(verticesLinea[1].lat),
-              lng: parseFloat(verticesLinea[1].lng)
-            },
-            zoom: 6
-          });
-
-          var polilinea = new google.maps.Polyline({
-            path: verticesLinea,
-            map: miMapa,
-            strokeColor: 'rgb(255, 0, 0)',
-            fillColor: 'rgb(255, 255, 0)',
-            strokeWeight: 4,
-          });
-          var marcadorPuntoMedio = new google.maps.Marker({
-          position: {lat: parseFloat(latPuntoMedio), lng: parseFloat(lonPuntoMedio)},
-          map: miMapa,
-	  title: 'Punto medio: lat'+parseFloat(latPuntoMedio)+' lng: '+ parseFloat(lonPuntoMedio)
-        });
-          var popup = new google.maps.InfoWindow();
-
-          polilinea.addListener('click', function(e) {
-            popup.setContent('Contenido');
-            popup.setPosition(e.latLng);
-            popup.open(miMapa);
-          });
-
-        }
     </script>
-
+<script src="<?php echo $dir; ?>../js/cargarLinea.js"></script>
   <?php 
 
       //invocación del método para calcular la longitud de la línea usando 2 las dos clase disponible, Vincenty y Haversine.
@@ -102,7 +65,7 @@ if (isset($arredatos["coordenadas"]))
       echo "Error, no se cargaron los datos.";
 }
 ?>
-<script type="text/javascript" src="<?php echo $dir?>../js/mostrarMapa.js"></script>
+
 <br>
 
           <a href="../formLinea.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>

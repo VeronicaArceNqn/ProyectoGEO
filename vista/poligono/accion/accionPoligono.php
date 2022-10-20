@@ -3,6 +3,7 @@ $dir = "../";
 $titulo = "Ver Poligono";
 include_once $dir . '../estructura/header.php';
 include_once $dir . '../../configuracion.php';
+include_once $dir . '../../configAPI.php';
 
 
 use Location\Coordinate;
@@ -33,52 +34,15 @@ use Location\Formatter\Polygon\GeoJSON;
         <div id="mapa"></div>
 
         <script async src="https://maps.googleapis.com/maps/api/js?
-key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
+key=<?php echo $keyGMaps; ?>&callback=cargar"></script>
         <script>         
         function cargar(){
            //Pasamos un array asociativo de php a javascript
             var datos = <?php  echo json_encode($arredatos["coordenadas"]); ?>;
-            
-            inicio(datos);
-        }
-
-            function inicio(datos) {
-
-                var verticesPoligono1 = [];
-                for (i = 0; i < datos.length; i++) {
-                    //Agregamos cada coordenada 
-                    verticesPoligono1.push({lat: parseFloat(datos[i].latitud), lng: parseFloat(datos[i].longitud)
-                    });
+              inicio(datos);
                 }
-          
-                
-
-                var miMapa = new google.maps.Map(document.getElementById('mapa'), {
-                    center: { //Definimos un centro
-                        lat: parseFloat(verticesPoligono1[1].lat),
-                        lng: parseFloat(verticesPoligono1[1].lng)
-                    },
-                    zoom: 6
-                });
-
-                var poligono = new google.maps.Polygon({
-                    path: verticesPoligono1,
-                    map: miMapa,
-                    strokeColor: 'rgb(255, 0, 0)',
-                    fillColor: 'rgb(255, 255, 0)',
-                    strokeWeight: 4,
-                });
-                var popup = new google.maps.InfoWindow();
-
-                poligono.addListener('click', function(e) {
-                    popup.setContent('<?php echo "Perimetro: ".$polygon->getPerimeter(new Vincenty())." metros"; ?>');
-                    popup.setPosition(e.latLng);
-                    popup.open(miMapa);
-                });
-               
-            }
-        
         </script>
+        <script src="<?php echo $dir; ?>../js/cargarPoligono.js"></script>
     <?php
 
         echo "El perimetro del poligono es de " . $polygon->getPerimeter(new Vincenty()) . " metros";
