@@ -15,7 +15,7 @@
 <body>
   <header class="container-fluid" > 
     <div class="pt-5">
-      <h3 class="text-secondary text-center">Libreria PHPGEO</h3>
+      <h3 class="text-secondary text-center">Librer&iacute;a PHPGEO</h3>
     </div>
     <div class="pt-5">
       <ul class="nav nav-tabs navbar-light bg-light">
@@ -23,7 +23,7 @@
             <a class="nav-link active" aria-current="page" href="<?php echo $dir?>../home/index.php">Inicio</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">TP Librerias</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">TP Librer&iacute;as</a>
             <ul class="dropdown-menu">
               <li>
 

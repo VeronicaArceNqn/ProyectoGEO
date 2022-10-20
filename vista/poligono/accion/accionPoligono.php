@@ -29,7 +29,7 @@ use Location\Formatter\Polygon\GeoJSON;
   
     ?>
         <h3 class="text-center">Ver Poligono</h3>
-
+        <a href="../formPoligono.php">Probar otra coordenada</a><br>
         <div id="mapa"></div>
 
         <script async src="https://maps.googleapis.com/maps/api/js?
@@ -82,7 +82,7 @@ key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
         </script>
     <?php
 
-        echo "El perimetro del poligono es: " . $polygon->getPerimeter(new Vincenty()) . " metros";
+        echo "El perimetro del poligono es de " . $polygon->getPerimeter(new Vincenty()) . " metros";
     } else {
         echo "<h2>Error, al cargar las coordenadas</h2>";
     }

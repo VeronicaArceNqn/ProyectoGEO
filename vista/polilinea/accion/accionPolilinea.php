@@ -6,6 +6,7 @@ require $dir."../../utiles/vendor/autoload.php";
 use Location\Coordinate;
 use Location\Polyline;
 use Location\Distance\Vincenty;
+use Location\Distance\Haversine;
 if($_POST)
 {
 $polyline = new Polyline();
@@ -50,10 +51,10 @@ polilinea.addListener('click', function (e) {
   </script>
 
 <?php 
-echo "LONGITUD DE UNA POLILINEA: <br>
-phpgeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos dos puntos. <br/>";
+echo "<h6>Longitud de una polilínea</h6>
+PHPGeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos tres puntos. <br/>";
 
-echo "La longitud de la polilinea es: ".$polyline->getLength(new Vincenty())." ";
+echo "La longitud de la polilinea es de ".$polyline->getLength(new Vincenty())." metros usando la clase Vincenty y de ".$polyline->getLength(new Haversine())." metros usando la clase Haversine.<br>.";
 
 }
 else{
