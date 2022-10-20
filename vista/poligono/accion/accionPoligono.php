@@ -9,6 +9,7 @@ include_once $dir . '../../configAPI.php';
 use Location\Coordinate;
 use Location\Polygon;
 use Location\Distance\Vincenty;
+use Location\Distance\Haversine;
 use Location\Formatter\Polygon\GeoJSON;
 ?><div class="container border border-secondary principal mt-3 pt-3">
     <?php
@@ -44,11 +45,17 @@ key=<?php echo $keyGMaps; ?>&callback=cargar"></script>
         </script>
         <script src="<?php echo $dir; ?>../js/cargarPoligono.js"></script>
     <?php
-
-        echo "El perimetro del poligono es de " . $polygon->getPerimeter(new Vincenty()) . " metros";
+        printf(
+            'Área del Polígono = %f m², <br> Perímetro del Polígono = %f m%s (Clase Vinventy)<br>',
+            $polygon->getArea(),
+            $polygon->getPerimeter(new \Location\Distance\Vincenty()),
+            
+            PHP_EOL
+        );
+        echo "Perímetro del Polígono = " . $polygon->getPerimeter(new Haversine()) . " metros (Clase Haversine)";
         ?>
         <br/>
-          <a href="../formPoligono.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>
+          <a href="../poligono.php" class="btn btn-secondary mt-3 text-center">Ingrese otro pol&iacute;gono</a>
           
         <?php
     } else {
