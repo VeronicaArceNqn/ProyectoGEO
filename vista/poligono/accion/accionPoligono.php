@@ -10,6 +10,7 @@ use Location\Coordinate;
 use Location\Polygon;
 use Location\Distance\Vincenty;
 use Location\Distance\Haversine;
+use Location\Formatter\Coordinate\DMS;
 use Location\Formatter\Polygon\GeoJSON;
 ?><div class="container border border-secondary principal mt-3 pt-3">
     <?php
@@ -45,18 +46,32 @@ key=<?php echo $keyGMaps; ?>&callback=cargar"></script>
         </script>
         <script src="<?php echo $dir; ?>../js/cargarPoligono.js"></script>
     <?php
+        //Devuelve el cálculo del área y el perímetro del polígono
         printf(
-            'Área del Polígono = %f m², <br> Perímetro del Polígono = %f m%s (Clase Vinventy)<br>',
+            '<h6>Área del Polígono </h6> %f m², <br> <h6>Perímetro del Polígono</h6> %f m%s (Clase Vinventy)<br>',
             $polygon->getArea(),
             $polygon->getPerimeter(new \Location\Distance\Vincenty()),
             
             PHP_EOL
         );
-        echo "Perímetro del Polígono = " . $polygon->getPerimeter(new Haversine()) . " metros (Clase Haversine)";
+        echo $polygon->getPerimeter(new Haversine()) . " m (Clase Haversine)<br>";
+
+        //Devuelve la longitud de cada segmento del Polígono, usando la clase Haversine    
+        echo "<h6>Longitud de cada segmento</h6>";
+        foreach ($polygon->getSegments() as $line) {
+            printf(" %0.3f m\n <br>", $line->getLength(new Haversine()));
+        }
+        //Devuelve la lista de puntos
+        printf("<h6>Detalle en Grados, Minutos y Segundos de los %d puntos del polígono:\n</h6>", $polygon->getNumberOfPoints());
+
+        foreach ($polygon->getPoints() as $point) {
+            echo $point->format(new DMS()). "<br>" . PHP_EOL;
+        }
+
         ?>
-        <br/>
+        
           <a href="../poligono.php" class="btn btn-secondary mt-3 text-center">Ingrese otro pol&iacute;gono</a>
-          
+        <br/>  
         <?php
     } else {
         echo "<h2>Error, al cargar las coordenadas</h2>";
