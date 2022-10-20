@@ -72,8 +72,12 @@ if (isset($arredatos["coordenadas"])) {
     echo "<h6>Longitud de una polil&iacute;nea</h6>
 PHPGeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos tres puntos. <br/>";
 
-    echo "La longitud de la polil&iacute;nea es de " . $polyline->getLength(new Vincenty()) . " metros usando la clase Vincenty y de " . $polyline->getLength(new Haversine()) . " metros usando la clase Haversine.<br>.";
+    echo "La longitud de la polil&iacute;nea es de " . $polyline->getLength(new Vincenty()) . " metros usando la clase Vincenty y de " . $polyline->getLength(new Haversine()) . " metros usando la clase Haversine.<br>";
   }
+  ?> 
+    <br/>
+          <a href="../formPolilinea.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>
+  <?php
 } else {
   echo "Error, no se cargaron los datos.";
 }

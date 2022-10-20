@@ -2,22 +2,28 @@
 $dir="../";
 $titulo="Ver Coordenada";
 include_once $dir.'../estructura/header.php';
-require $dir."../../utiles/vendor/autoload.php";
+include_once $dir . '../../configuracion.php';
 use Location\Coordinate;
 use Location\Formatter\Coordinate\DMS;
+
+
+
+ 
 ?>
   <div class="container border border-secondary principal mt-3 pt-3">
 <?php
 
-  if ($_POST){
+$arredatos = data_submitted();
+if (isset($arredatos["coordenadas"]))
+ {
 
-      $latitud = $_POST['latitud'] ;
-      $longitud = $_POST['longitud'] ;
+      $latitud = $arredatos["coordenadas"][0]["latitud"] ;
+      $longitud =  $arredatos["coordenadas"][0]["longitud"] ;
       //echo "Datos enviados: <br> $Latitud <br> $Longitud <br>";
       $coordinate = new Coordinate($latitud, $longitud); 
       $formatter = new DMS();
       ?>
-      <div class="container border border-secondary principal mt-3 pt-3">
+      
       <h3 class="text-center">Punto en el mapa</h3>
       <div id="mapa"></div>
         <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSSBXWB5v-BnIIplydnkuDkBHP3AVxBl4&callback=cargar"></script>
@@ -70,16 +76,18 @@ use Location\Formatter\Coordinate\DMS;
     echo $coordinate->format($formatter) . PHP_EOL."  (E: Este / W: Oeste)<br>";
     ?>
     </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+   
     <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo $dir?>../css/estilo.css">
     <script type="text/javascript" src="<?php echo $dir?>../js/mostrarMapa.js"></script>
     <script type="text/javascript">
       mostrarCoordenadas(<?php echo $latitud;?>,<?php echo $longitud;?>);
     </script>
-    <div class="container-fluid center">
-    <a href="../formCoordenada.php">Probar otra coordenada</a><br>
-    </div>
+   
+   <br>
+
+<a href="../formCoordenada.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>
+   
       
     <?php }else{
       echo "No se recibieron datos<br />";

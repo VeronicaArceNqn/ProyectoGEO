@@ -12,7 +12,7 @@ $arredatos = data_submitted();
 if (isset($arredatos["coordenadas"]))
  {
  
-   print_r($arredatos["coordenadas"]);
+  // print_r($arredatos["coordenadas"]);
   
   $line = new Line(new Coordinate($arredatos["coordenadas"][0]["latitud"], $arredatos["coordenadas"][0]["longitud"]), new Coordinate($arredatos["coordenadas"][1]["latitud"], $arredatos["coordenadas"][1]["longitud"]));
 
@@ -103,8 +103,9 @@ if (isset($arredatos["coordenadas"]))
 }
 ?>
 <script type="text/javascript" src="<?php echo $dir?>../js/mostrarMapa.js"></script>
-<input type="button" id="Ver" value="Ver el punto medio en el Mapa" onclick="mostrarCoordenadas(<?php echo $midpoint->getLat();?>,<?php echo $midpoint->getLng(); ?> )"></input><br>
-<a href="../formLinea.php">Probar con otra l&iacute;nea</a><br>
+<br>
+
+          <a href="../formLinea.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>
 </div>
 <?php
 include_once $dir.'../estructura/footer.php';

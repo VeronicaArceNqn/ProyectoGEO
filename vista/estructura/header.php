@@ -2,7 +2,6 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo $titulo;?></title>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
   <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
   <link rel="stylesheet" href="<?php echo $dir?>../css/bootstrap.css">
   <link rel="stylesheet" href="<?php echo $dir?>../css/bootstrap.css">
