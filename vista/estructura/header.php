@@ -55,7 +55,7 @@
             </ul>
           </li>
           <li class="nav-item">
-        <a class="nav-link" target="_blank" href="../../PHPGEO y API google maps.pdf">Documentaci&oacute;n</a>
+        <a class="nav-link" target="_blank" href="<?php echo $dir?>../../PHPGEO y API google maps.pdf">Documentaci&oacute;n</a>
             </li>
             
       </ul>
