@@ -3,8 +3,8 @@
  $titulo="Coordenada";
  include_once $dir.'../estructura/header.php';
  $cantCoordenadas=1;
- $arreAsoc[0]["latitud"]=-40.9;
-$arreAsoc[0]["longitud"]=-65;
+ $arreAsoc[0]["latitud"]=-40.85;
+$arreAsoc[0]["longitud"]=-65.15;
  ?>
  <div class="container border border-secondary principal mt-3 pt-3">
 

@@ -6,7 +6,7 @@
  ?>
  <div class="container border border-secondary principal mt-3 pt-3">
  <div class="">
-    <h3 class="text-center">Definir poligono</h3>
+    <h3 class="text-center">Definir pol&iacute;gono</h3>
     <div class="col-md-12">
        
 

@@ -4,8 +4,8 @@ $titulo="Linea";
 include_once '../estructura/header.php';
 $arreAsoc[0]["latitud"]=-41.10;
 $arreAsoc[0]["longitud"]=-71.30;
-$arreAsoc[1]["latitud"]=-42.96;
-$arreAsoc[1]["longitud"]=-68.10;
+$arreAsoc[1]["latitud"]=-40.85;
+$arreAsoc[1]["longitud"]=-65.15;
 $cantCoordenadas=2;
 ?>
 

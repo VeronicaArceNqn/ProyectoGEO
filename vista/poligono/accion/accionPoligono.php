@@ -48,7 +48,7 @@ key=<?php echo $keyGMaps; ?>&callback=cargar"></script>
     <?php
         //Devuelve el cálculo del área y el perímetro del polígono
         printf(
-            '<h6>Área del Polígono </h6> %f m², <br> <h6>Perímetro del Polígono</h6> %f m%s (Clase Vinventy)<br>',
+            '<h6>Área del Polígono </h6> %f m² <br> <h6>Perímetro del Polígono</h6> %f m%s (Clase Vinventy)<br>',
             $polygon->getArea(),
             $polygon->getPerimeter(new \Location\Distance\Vincenty()),
             

@@ -37,11 +37,11 @@ if (isset($arredatos["coordenadas"]))
   <?php 
 
       //invocación del método para calcular la longitud de la línea usando 2 las dos clase disponible, Vincenty y Haversine.
-  echo "<h6>Longitud de la Linea</h6> ".$line->getLength(new Vincenty())." metros usando la clase Vincenty.<br> ".$line->getLength(new Haversine())." metros usando la clase Haversine.<br> ";
+  echo "<h6>Longitud de la Línea</h6> ".$line->getLength(new Vincenty())." metros usando la clase Vincenty.<br> ".$line->getLength(new Haversine())." metros usando la clase Haversine.<br> ";
   //método de la línea para cálcular el punto medio de la línea. Muestra las coordenadas y la distancia en metros.
   $midpoint = $line->getMidPoint();
   printf(
-    '<h6>Punto medio de la linea</h6> Se encuentra a %.3f grados de latitud y a %.3f grados de longitud.%s<br>',
+    '<h6>Punto medio de la línea</h6> Se encuentra a %.3f grados de latitud y a %.3f grados de longitud.%s<br>',
     $midpoint->getLat(),
     $midpoint->getLng(),
     PHP_EOL
