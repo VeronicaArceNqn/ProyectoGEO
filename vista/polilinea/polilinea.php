@@ -12,7 +12,7 @@
 
     </div>
     
-    <form method="post" class="row m-4 pl-3 pt-3 bg-light fw-bold" action="formPolilinea.php">
+    <form method="post" class="row m-4 pl-3 pt-3 bg-light fw-bold  needs-validation" action="formPolilinea.php" novalidate>
     <div class="col-md-2"></div>
     <div class="col-md-2"></div>  
         
@@ -37,7 +37,7 @@
     <br><br>
  </div>
  </div>
-
+ <script src="../js/validacionFormulario.js"></script>
 <?php
  include_once $dir.'../estructura/footer.php';
 ?>

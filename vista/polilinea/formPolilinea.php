@@ -61,6 +61,7 @@ for($i=0;$i<$cantCoordenadas;$i++)
 
 </div>
 </div>
+<script src="../js/validacionFormulario.js"></script>
 <?php
 include_once '../estructura/footer.php';
 ?>

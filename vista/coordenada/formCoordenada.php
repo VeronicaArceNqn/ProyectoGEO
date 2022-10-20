@@ -16,7 +16,7 @@ $arreAsoc[0]["longitud"]=-65;
 
     </div>
     
-    <form method="post" class="row m-4 pl-3 pt-3 bg-light fw-bold" action="accion/formato.php">
+    <form method="post" class="row m-4 pl-3 pt-3 bg-light fw-bold needs-validation" action="accion/formato.php" novalidate>
     <div class="col-md-2">Ingrese coordenadas en formato decimal (ej. 41.12345) para ver su representaci&oacute;n en otro formato y para visualizar la ubicaci&oacute;n en un mapa</div>
     <div class="col-md-2"></div>  
         
@@ -41,7 +41,7 @@ for($i=0;$i<$cantCoordenadas;$i++)
     <br><br>
  </div>
 
-  <!--<input type="button" id="parar" value="Parar" onclick="detener();"/>-->
+ <script src="../js/validacionFormulario.js"></script>
 <?php
  include_once $dir.'../estructura/footer.php';
 ?>
