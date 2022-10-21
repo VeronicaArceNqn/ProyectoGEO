@@ -39,10 +39,10 @@ if (isset($arredatos["coordenadas"]))
         </script>  
     
     <div class="container-fluid">  
-      <h6>Formato</h6> 
-      - Grados, Minutos y Segundos : <input name="GMS" value="<?php echo $coordinate->format($formatter) . PHP_EOL; ?>"><br>
+      <h6>Cambio del formato decimal, latitud <?php echo $latitud; ?> y longitud  <?php echo $longitud; ?> a:  </h6> 
+      Grados, Minutos y Segundos :<br/> <?php echo $coordinate->format($formatter) . PHP_EOL; ?><br>
 
-      - Grados, Minutos y Segundos con los puntos cardinales : <br>
+      Grados, Minutos y Segundos con detalle de los puntos cardinales : <br>
     
     <?php
     $formatter->setSeparator('  (N: Norte / S: Sur),<br>')

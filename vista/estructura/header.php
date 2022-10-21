@@ -37,7 +37,7 @@
               <li>
                 <a class="dropdown-item" href="<?php echo $dir?>../linea/formLinea.php"><i class="bi bi-dash-lg"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
-</svg></i> Linea</a>
+</svg></i> L&iacute;nea</a>
               </li>
             <!--  <li>
                 <a class="dropdown-item" href="<?php echo $dir?>perimetro.php">Perimetro Poligono</a>
@@ -45,12 +45,12 @@
               <li>
                 <a class="dropdown-item" href="<?php echo $dir?>../polilinea/polilinea.php"><i class="bi bi-chevron-compact-down"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-</svg></i> Polilinea</a>
+</svg></i> Polil&iacute;nea</a>
               </li>
               <li>
                 <a class="dropdown-item" href="<?php echo $dir?>../poligono/poligono.php"><i class="bi bi-pentagon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pentagon" viewBox="0 0 16 16">
   <path d="M7.685 1.545a.5.5 0 0 1 .63 0l6.263 5.088a.5.5 0 0 1 .161.539l-2.362 7.479a.5.5 0 0 1-.476.349H4.099a.5.5 0 0 1-.476-.35L1.26 7.173a.5.5 0 0 1 .161-.54l6.263-5.087Zm8.213 5.28a.5.5 0 0 0-.162-.54L8.316.257a.5.5 0 0 0-.631 0L.264 6.286a.5.5 0 0 0-.162.538l2.788 8.827a.5.5 0 0 0 .476.349h9.268a.5.5 0 0 0 .476-.35l2.788-8.826Z"/>
-</svg></i> Poligono</a>
+</svg></i> Pol&iacute;gono</a>
               </li>
             </ul>
           </li>

@@ -9,6 +9,7 @@ use Location\Coordinate;
 use Location\Polyline;
 use Location\Distance\Vincenty;
 use Location\Distance\Haversine;
+use Location\Formatter\Coordinate\DMS;
 
 $arredatos = data_submitted();
 if (isset($arredatos["coordenadas"])) {
@@ -38,11 +39,24 @@ if (isset($arredatos["coordenadas"])) {
       </script>
 <script src="<?php echo $dir; ?>../js/cargarPolilinea.js"></script>
   <?php
-    echo "<h6>Longitud de una polil&iacute;nea</h6>
-PHPGeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos tres puntos. <br/>";
+    echo "PHPGeo tiene una implementación de polilíneas que se puede usar para calcular la longitud de un track GPS o una ruta. Una polilínea consta de al menos tres puntos. <br/>";
 
-    echo "La longitud de la polil&iacute;nea es de " . $polyline->getLength(new Vincenty()) . " metros usando la clase Vincenty y de " . $polyline->getLength(new Haversine()) . " metros usando la clase Haversine.<br>";
+    echo "<h6>Longitud de la polil&iacute;nea</h6> " . $polyline->getLength(new Vincenty()) . " metros usando la clase Vincenty. <br/>" . $polyline->getLength(new Haversine()) . " metros usando la clase Haversine.<br>";
   }
+
+  //Devuelve la longitud de cada segmento de la Polilínea, usando la clase Haversine    
+  echo "<h6>Longitud de cada segmento</h6>";
+  foreach ($polyline->getSegments() as $segment) {
+      printf("%0.2f kilometros\n <br>",
+      ($segment->getLength(new Haversine()) / 1000). "<br>");
+  }
+  //Devuelve la lista de puntos
+  printf("<h6>Detalle en Grados, Minutos y Segundos de los %d puntos de la polilínea\n</h6>", $polyline->getNumberOfPoints());
+
+  foreach ($polyline->getPoints() as $point) {
+      echo $point->format(new DMS()). "<br>" . PHP_EOL;
+  }
+
   ?> 
     <br/>
           <a href="../polilinea.php" class="btn btn-secondary mt-3 text-center">Ingrese otra polil&iacute;nea</a>
