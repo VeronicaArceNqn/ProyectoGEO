@@ -8,6 +8,7 @@ use Location\Coordinate;
 use Location\Distance\Vincenty;
 use Location\Distance\Haversine;
 use Location\Line;
+use Location\CardinalDirection\CardinalDirectionDistancesCalculator;
 
 $arredatos = data_submitted();
 if (isset($arredatos["coordenadas"]))
@@ -60,8 +61,15 @@ if (isset($arredatos["coordenadas"]))
     $line->getPoint2()->getDistance($midpoint, new Haversine()),
     PHP_EOL
 );
-    }
-    else{
+
+  $calculator = new Haversine();
+  $cardinalDirectionDistancesCalculator = new CardinalDirectionDistancesCalculator();
+
+  $result = $cardinalDirectionDistancesCalculator->getCardinalDirectionDistances($line->getPoint1(), $line->getPoint2(), $calculator);
+
+  echo '<h6>Distancia Cardinal: (Haversine)</h6> Norte=' . ($result->getNorth()/1000). ' Km;<br/> Este=' . ($result->getEast()/1000). ' Km;<br/> Sur=' . ($result->getSouth()/1000). ' Km;<br/> Oeste=' . ($result->getWest()/1000) . ' Km.<br/>';
+}
+  else{
       echo "Error, no se cargaron los datos.";
 }
 ?>
