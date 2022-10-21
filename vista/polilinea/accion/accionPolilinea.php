@@ -17,8 +17,10 @@ if (isset($arredatos["coordenadas"])) {
   $objControl = new CtrlCoordenada();
   //Validamos las coordenadas
   if ($objControl->validarCoordenada($arredatos["coordenadas"])) {
+    //creamos una instancia de la clase poligono
     $polyline = new Polyline();
     for ($i = 0; $i < count($arredatos["coordenadas"]); $i++) {
+      //agregamos coordenada
       $polyline->addPoint(new Coordinate($arredatos["coordenadas"][$i]["latitud"], $arredatos["coordenadas"][$i]["longitud"]));
     }
 ?>
@@ -43,7 +45,7 @@ PHPGeo tiene una implementación de polilíneas que se puede usar para calcular 
   }
   ?> 
     <br/>
-          <a href="../formPolilinea.php" class="btn btn-secondary mt-3 text-center">Cambiar valores de coordenadas</a>
+          <a href="../polilinea.php" class="btn btn-secondary mt-3 text-center">Ingrese otra polil&iacute;nea</a>
   <?php
 } else {
   echo "Error, no se cargaron los datos.";
